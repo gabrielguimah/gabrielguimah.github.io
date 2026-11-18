@@ -1,0 +1,231 @@
+.hero {
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.hero__status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--color-accent);
+}
+
+.hero__status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 0 rgba(124, 240, 197, 0.6);
+  animation: pulse 2s infinite;
+}
+
+.hero__title {
+  font-size: clamp(2.6rem, 7vw, 5.2rem);
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.hero__name {
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero__role {
+  margin-top: 14px;
+  font-size: clamp(1.2rem, 2.6vw, 1.6rem);
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+.hero__role > span:first-child {
+  display: block;
+}
+
+/* rotating skill */
+.typewriter {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  height: 1.6em;
+  margin-top: 2px;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+}
+
+.typewriter__prompt {
+  flex: none;
+  color: var(--color-accent);
+}
+
+.typewriter__text {
+  padding-right: 4px;
+  border-right: 2px solid var(--color-accent);
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.hero__location {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  font-size: 0.92rem;
+  color: var(--color-muted);
+}
+
+.hero__location .icon {
+  width: 16px;
+  height: 16px;
+  color: var(--color-accent);
+}
+
+.hero__summary {
+  max-width: 600px;
+  margin-top: 26px;
+  font-size: 1.08rem;
+  color: var(--color-muted);
+}
+
+.hero__summary .hl {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 38px;
+}
+
+.hero__socials {
+  display: flex;
+  gap: 18px;
+  margin-top: 48px;
+}
+
+.hero__socials a {
+  display: block;
+  color: var(--color-muted);
+  transition: color 0.2s, transform 0.2s;
+}
+
+.hero__socials a:hover {
+  color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.hero__socials .icon {
+  width: 22px;
+  height: 22px;
+}
+
+/* profile photo with liquid ring */
+.avatar {
+  position: relative;
+  justify-self: center;
+  width: min(320px, 70vw);
+  aspect-ratio: 1;
+}
+
+.avatar::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
+  background: conic-gradient(from 140deg, var(--color-accent), var(--color-accent-2), var(--color-accent-3), var(--color-accent));
+  filter: blur(1px);
+  opacity: 0.95;
+  animation: blob 9s ease-in-out infinite, spin 16s linear infinite;
+}
+
+.avatar::after {
+  content: '';
+  position: absolute;
+  inset: -48px;
+  z-index: -2;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 240, 197, 0.2), transparent 65%);
+}
+
+.avatar__blob {
+  position: absolute;
+  inset: -18px;
+  z-index: -1;
+  border-radius: 58% 42% 37% 63% / 54% 61% 39% 46%;
+  background: conic-gradient(from 300deg, var(--color-accent-2), var(--color-accent), var(--color-accent-2));
+  opacity: 0.35;
+  filter: blur(10px);
+  animation: blob 12s ease-in-out infinite reverse, spin 22s linear infinite reverse;
+}
+
+.avatar__photo {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid var(--color-bg);
+}
+
+@media (max-width: 860px) {
+  .hero {
+    min-height: auto;
+    padding-top: 48px;
+    padding-bottom: 72px;
+  }
+}
+
+@media (max-width: 820px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .avatar {
+    order: -1;
+    width: min(200px, 55vw);
+  }
+}
+
+@media (max-width: 700px) {
+  .hero {
+    padding-bottom: 24px;
+  }
+
+  .hero__summary {
+    font-size: 1rem;
+  }
+
+  .hero__actions .button {
+    flex: 1 1 auto;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero {
+    padding-top: 40px;
+  }
+
+  .hero__title {
+    font-size: 2.3rem;
+  }
+}

@@ -1,483 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gabriel Guimarães — Front-End Engineer</title>
-<meta name="description" content="Gabriel Guimarães da Rocha — Front-End Engineer especializado em Angular, React e TypeScript.">
-<meta property="og:title" content="Gabriel Guimarães — Front-End Engineer">
-<meta property="og:description" content="Angular · React · TypeScript. 5+ anos construindo aplicações web e mobile enterprise.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230b0d10'/><text x='50' y='66' font-size='50' text-anchor='middle' fill='%237cf0c5' font-family='monospace' font-weight='700'>G.</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#0b0d10; --bg2:#111419; --card:#14181e; --line:#222831;
-    --text:#e6e9ee; --muted:#8b94a3; --accent:#7cf0c5; --accent2:#5b8cff;
-    --mono:'JetBrains Mono',ui-monospace,monospace; --sans:'Inter',system-ui,sans-serif;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  a{color:inherit;text-decoration:none}
-  ::selection{background:var(--accent);color:var(--bg)}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gabriel Guimarães — Front-End Engineer</title>
+    <meta name="description" content="Gabriel Guimarães da Rocha — Front-End Engineer especializado em Angular, React e TypeScript." />
+    <meta name="theme-color" content="#0b0d10" />
 
-  /* glow */
-  .glow{position:fixed;inset:-20% -10% auto auto;width:640px;height:640px;border-radius:50%;
-    background:radial-gradient(circle,rgba(124,240,197,.12),transparent 60%);pointer-events:none;z-index:0;filter:blur(20px)}
-  .glow.b{inset:auto auto -25% -15%;background:radial-gradient(circle,rgba(91,140,255,.10),transparent 60%)}
-  main,header,footer{position:relative;z-index:1}
-  main{overflow-x:clip}
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://gabrielguimah.com.br/" />
+    <meta property="og:title" content="Gabriel Guimarães — Front-End Engineer" />
+    <meta property="og:description" content="Angular · React · TypeScript. 5+ anos construindo aplicações web e mobile enterprise." />
+    <meta property="og:image" content="https://gabrielguimah.com.br/assets/images/profile.jpg" />
 
-  /* nav */
-  header{position:sticky;top:0;backdrop-filter:blur(12px);background:rgba(11,13,16,.7);border-bottom:1px solid transparent;transition:border-color .3s;z-index:10}
-  header.scrolled{border-color:var(--line)}
-  nav{display:flex;align-items:center;justify-content:space-between;height:68px}
-  .logo{font-family:var(--mono);font-weight:500;font-size:1.05rem}
-  .logo span{color:var(--accent)}
-  .links{display:flex;gap:24px;align-items:center}
-  .links a{font-size:.9rem;color:var(--muted);transition:color .2s}
-  .links a:hover{color:var(--text)}
-  .lang{display:flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--bg2)}
-  .lang button{display:flex;align-items:center;gap:6px;border:0;background:none;color:var(--muted);font-family:var(--mono);font-size:.74rem;padding:4px 10px;border-radius:999px;cursor:pointer;transition:background .2s,color .2s}
-  .lang button:hover{color:var(--text)}
-  .lang button.on{background:var(--card);color:var(--text);box-shadow:0 0 0 1px rgba(124,240,197,.35)}
-  .lang button:not(.on) .flag{filter:grayscale(.7);opacity:.6}
-  .flag{width:20px;height:14px;border-radius:2px;display:block}
-  .hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:center}
-  .avatar{justify-self:center;position:relative;width:min(320px,70vw);aspect-ratio:1}
-  .avatar::before{content:"";position:absolute;inset:-12px;border-radius:42% 58% 63% 37% / 41% 44% 56% 59%;background:conic-gradient(from 140deg,var(--accent),var(--accent2),#a78bfa,var(--accent));filter:blur(1px);opacity:.95;animation:blob 9s ease-in-out infinite,spin 16s linear infinite}
-  .avatar .blob2{position:absolute;inset:-18px;border-radius:58% 42% 37% 63% / 54% 61% 39% 46%;background:conic-gradient(from 300deg,var(--accent2),var(--accent),var(--accent2));opacity:.35;filter:blur(10px);animation:blob 12s ease-in-out infinite reverse,spin 22s linear infinite reverse;z-index:-1}
-  @keyframes blob{0%,100%{border-radius:42% 58% 63% 37% / 41% 44% 56% 59%}25%{border-radius:63% 37% 44% 56% / 55% 62% 38% 45%}50%{border-radius:38% 62% 56% 44% / 63% 39% 61% 37%}75%{border-radius:55% 45% 35% 65% / 42% 58% 42% 58%}}
-  .avatar::after{content:"";position:absolute;inset:-48px;border-radius:50%;background:radial-gradient(circle,rgba(124,240,197,.2),transparent 65%);z-index:-2}
-  .avatar img{position:relative;width:100%;height:100%;object-fit:cover;border-radius:50%;border:6px solid var(--bg)}
-  @keyframes spin{to{transform:rotate(360deg)}}
-  .loc{display:inline-flex;align-items:center;gap:6px;color:var(--muted);font-size:.92rem;margin-top:10px}
-  .loc svg{width:16px;height:16px;color:var(--accent)}
-  .menu{display:none;background:none;border:0;color:var(--text);font-size:1.4rem;cursor:pointer}
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="modulepreload" href="dist/main.js" />
+  </head>
 
-  /* hero */
-  .hero{min-height:calc(100vh - 68px);display:flex;flex-direction:column;justify-content:center;padding:60px 24px}
-  .tag{font-family:var(--mono);color:var(--accent);font-size:.9rem;margin-bottom:20px;display:flex;align-items:center;gap:10px}
-  .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(124,240,197,.6);animation:pulse 2s infinite}
-  @keyframes pulse{70%{box-shadow:0 0 0 10px rgba(124,240,197,0)}100%{box-shadow:0 0 0 0 rgba(124,240,197,0)}}
-  h1{font-size:clamp(2.6rem,7vw,5.2rem);line-height:1.05;font-weight:800;letter-spacing:-.03em}
-  h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .role{font-size:clamp(1.2rem,2.6vw,1.6rem);color:var(--muted);margin-top:14px;font-weight:500}
-  .role > span:first-child{display:block}
-  .typed-line{display:flex;align-items:center;gap:.5em;white-space:nowrap;height:1.6em;margin-top:2px;font-family:var(--mono);overflow:hidden}
-  .typed-line .prompt{color:var(--accent);flex:none}
-  .role .typed{color:var(--text);font-family:var(--mono);border-right:2px solid var(--accent);padding-right:4px;line-height:1.2}
-  .hl{color:var(--accent);font-weight:600}
-  .lead{max-width:600px;color:var(--muted);margin-top:26px;font-size:1.08rem}
-  .cta{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap}
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:10px;font-weight:600;font-size:.95rem;transition:transform .2s,background .2s,border-color .2s}
-  .btn.primary{background:var(--accent);color:var(--bg)}
-  .btn.primary:hover{transform:translateY(-2px);background:#9af5d4}
-  .btn.ghost{border:1px solid var(--line)}
-  .btn.ghost:hover{border-color:var(--accent);transform:translateY(-2px)}
-  .socials{display:flex;gap:18px;margin-top:48px}
-  .socials a{color:var(--muted);transition:color .2s,transform .2s}
-  .socials a:hover{color:var(--accent);transform:translateY(-2px)}
-  .socials svg{width:22px;height:22px}
+  <body>
+    <div class="glow" aria-hidden="true"></div>
+    <div class="glow glow--secondary" aria-hidden="true"></div>
 
-  /* sections */
-  section{padding:55px 0}
-  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:48px}
-  .sec-head .num{font-family:var(--mono);color:var(--accent);font-size:.95rem}
-  .sec-head h2{font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:700;letter-spacing:-.02em}
-  .sec-head .bar{flex:1;height:1px;background:var(--line);max-width:300px}
+    <site-header></site-header>
 
-  /* about */
-  .about{display:grid;grid-template-columns:1.4fr 1fr;gap:56px;align-items:start}
-  .about p{color:var(--muted);margin-bottom:18px;font-size:1.04rem}
-  .about p strong{color:var(--accent);font-weight:600}
-  .stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .stats .stat:last-child:nth-child(odd){grid-column:1/-1}
-  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
-  .stat b{display:block;font-size:2rem;font-weight:800;color:var(--accent);letter-spacing:-.02em}
-  .stat span{color:var(--muted);font-size:.88rem}
+    <main>
+      <hero-section></hero-section>
+      <about-section></about-section>
+      <education-section></education-section>
+      <experience-section></experience-section>
+      <projects-section></projects-section>
+      <stack-section></stack-section>
+      <contact-section></contact-section>
+    </main>
 
-  /* experience */
-  .timeline{position:relative;padding-left:28px;border-left:1px solid var(--line)}
-  .job{position:relative;padding-bottom:56px}
-  .job:last-child{padding-bottom:0}
-  .job::before{content:"";position:absolute;left:-34px;top:8px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
-  .job .period{font-family:var(--mono);color:var(--muted);font-size:.84rem}
-  .job h3{font-size:1.35rem;margin:6px 0 2px}
-  .job h3 em{font-style:normal;color:var(--accent)}
-  .job .desc{color:var(--muted);margin:10px 0 14px;max-width:720px}
-  .job ul{list-style:none;max-width:760px}
-  .job li{color:var(--muted);padding-left:22px;position:relative;margin-bottom:8px;font-size:.98rem}
-  .job li::before{content:"▹";position:absolute;left:0;color:var(--accent)}
-  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-  .chip{font-family:var(--mono);font-size:.76rem;padding:5px 11px;border-radius:999px;background:rgba(124,240,197,.08);color:var(--accent);border:1px solid rgba(124,240,197,.18)}
+    <site-footer></site-footer>
 
-  /* skills */
-  .skills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-  .skill{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;transition:transform .25s,border-color .25s}
-  .skill:hover{transform:translateY(-4px);border-color:rgba(124,240,197,.4)}
-  .skill .ic svg{width:22px;height:22px}
-  .skill .ic{width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:rgba(124,240,197,.1);color:var(--accent);margin-bottom:16px;font-family:var(--mono);font-weight:600}
-  .skill h3{font-size:1.05rem;margin-bottom:12px}
-  .skill .list{display:flex;flex-wrap:wrap;gap:7px}
-  .skill .list span{font-size:.84rem;color:var(--muted);background:var(--bg2);border:1px solid var(--line);padding:4px 10px;border-radius:7px}
+    <noscript>
+      <p style="padding: 24px; text-align: center">
+        Este site precisa de JavaScript. Contato: <a href="mailto:gabrielguimah@gmail.com">gabrielguimah@gmail.com</a>
+      </p>
+    </noscript>
 
-  /* tech stack */
-  .stack-note{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:.88rem;margin:-24px 0 18px}
-  .core-dot{width:10px;height:10px;border-radius:3px;background:rgba(124,240,197,.25);border:1px solid rgba(124,240,197,.5);flex:none}
-  .stack{border:1px solid var(--line);border-radius:16px;background:var(--card);overflow:hidden}
-  .stack-row{display:grid;grid-template-columns:280px minmax(0,1fr);gap:24px;align-items:center;padding:18px 24px;border-top:1px solid var(--line);transition:background .2s}
-  .stack-row:first-child{border-top:0}
-  .stack-row:hover{background:rgba(124,240,197,.03)}
-  .stack-head{display:flex;align-items:center;gap:12px;min-width:0}
-  .stack-head .ic{width:38px;height:38px;flex:none;border-radius:10px;display:grid;place-items:center;background:rgba(124,240,197,.1);color:var(--accent);border:1px solid rgba(124,240,197,.18)}
-  .stack-head .ic svg{width:20px;height:20px}
-  .stack-head h3{font-size:1rem;font-weight:600}
-  .stack-head .count{margin-left:auto;font-family:var(--mono);font-size:.72rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:1px 8px}
-  .stack .list{display:flex;flex-wrap:wrap;gap:7px}
-  .stack .list span{font-size:.84rem;color:var(--muted);background:var(--bg2);border:1px solid var(--line);padding:4px 10px;border-radius:7px;max-width:100%;overflow-wrap:anywhere;transition:color .2s,border-color .2s}
-  .stack .list span:hover{color:var(--text);border-color:rgba(124,240,197,.35)}
-  .stack .list span.core{color:var(--accent);background:rgba(124,240,197,.07);border-color:rgba(124,240,197,.22)}
-  @media (max-width:860px){
-    .stack-row{grid-template-columns:1fr;gap:12px;padding:18px 18px}
-    .stack-head .count{margin-left:6px}
-  }
-
-  /* projects */
-  .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:20px}
-  .proj{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px;display:flex;flex-direction:column;transition:transform .25s,border-color .25s}
-  .proj:hover{transform:translateY(-4px);border-color:rgba(124,240,197,.4)}
-  .proj .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;color:var(--accent)}
-  .proj .top svg{width:36px;height:36px}
-  .proj .top .ext{color:var(--muted);font-family:var(--mono);font-size:.78rem}
-  .proj h3{font-size:1.2rem;margin-bottom:10px}
-  .proj p{color:var(--muted);font-size:.96rem;flex:1}
-  .proj .chips{margin-top:20px}
-
-  /* education */
-  .edu{display:grid;gap:20px}
-  .edu .item{border:1px solid var(--line);border-radius:16px;padding:26px;background:var(--card)}
-  .edu .item .period{font-family:var(--mono);font-size:.82rem;color:var(--accent)}
-  .edu .item h3{margin:8px 0 4px;font-size:1.1rem}
-  .edu .item p{color:var(--muted);font-size:.94rem}
-  .edu{align-items:start;grid-template-columns:1fr}
-  .edu-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-  .edu-ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:rgba(124,240,197,.1);color:var(--accent);border:1px solid rgba(124,240,197,.18)}
-  .edu-ic svg{width:24px;height:24px}
-  .edu .item .chips{margin-top:16px}
-  .sub{display:flex;align-items:center;gap:8px;font-size:.82rem;font-family:var(--mono);font-weight:500;color:var(--text);text-transform:uppercase;letter-spacing:.06em;margin:22px 0 10px}
-  .sub svg{width:16px;height:16px;color:var(--accent)}
-  .mods{display:flex;flex-wrap:wrap;gap:8px;max-width:820px}
-  .mods span{font-size:.86rem;color:var(--text);background:rgba(124,240,197,.05);border:1px solid rgba(124,240,197,.16);border-left:2px solid var(--accent);padding:5px 12px;border-radius:7px}
-  .mods.feats{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:8px}
-  .mods.feats span{color:var(--muted)}
-  .job .chips{max-width:820px}
-  .langs{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
-  .langs div{border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:.9rem;color:var(--muted)}
-  .langs b{color:var(--text);font-weight:600;margin-right:6px}
-
-  /* contact */
-  .contact{text-align:center;max-width:620px;margin:0 auto}
-  .contact .num{font-family:var(--mono);color:var(--accent)}
-  .contact h2{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:800;letter-spacing:-.03em;margin:12px 0 18px}
-  .contact p{color:var(--muted);font-size:1.06rem;margin-bottom:36px}
-  .mail{font-family:var(--mono);display:inline-block;margin-top:22px;color:var(--muted);font-size:.9rem;cursor:pointer;transition:color .2s}
-  .mail:hover{color:var(--accent)}
-  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-  .btn.wa svg{width:20px;height:20px}
-  .btn.ico{gap:10px}
-  .btn.ico svg{width:20px;height:20px;flex:none}
-  .mail.phone{display:inline-flex;align-items:center;gap:8px}
-  .mail.phone .flag{width:22px;height:15px;border-radius:2px}
-  .mail-sep{color:var(--line);margin:0 10px}
-
-  footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:.85rem;font-family:var(--mono)}
-
-  /* reveal */
-  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
-  .reveal.in{opacity:1;transform:none}
-  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.dot,.avatar::before,.avatar .blob2{animation:none}}
-
-  .chip,.mods span,.skill .list span{max-width:100%;overflow-wrap:anywhere}
-  @media (max-width:1100px){ .links{gap:18px} .links a{font-size:.86rem} }
-  @media (max-width:980px){
-    .menu{display:block}
-    .links{position:fixed;top:68px;right:0;left:0;flex-direction:column;align-items:flex-start;gap:20px;padding:28px 24px;background:var(--bg2);border-bottom:1px solid var(--line);transform:translateY(-140%);visibility:hidden;transition:transform .35s,visibility .35s}
-    .links.open{transform:none;visibility:visible}
-    .links a{font-size:1rem}
-  }
-  @media (max-width:860px){
-    .hero{min-height:auto;padding:48px 24px 72px}
-  }
-  @media (max-width:700px){
-    .skills{grid-template-columns:1fr}
-    section{padding:32px 0}
-    .hero{padding-bottom:24px}
-    .sec-head{margin-bottom:32px}
-    .sec-head .bar{display:none}
-    .timeline{padding-left:22px}
-    .job::before{left:-28px}
-    .job h3{font-size:1.2rem}
-    .skill,.proj,.edu .item{padding:20px}
-    .lead{font-size:1rem}
-    .btn{padding:12px 18px}
-    .cta .btn{flex:1 1 auto;justify-content:center}
-    .mail-sep{display:none}
-    .contact .mail{display:block;margin-top:14px}
-    .contact .mail.phone{display:inline-flex}
-  }
-  @media (max-width:380px){
-    .wrap{padding:0 18px}
-    .hero{padding:40px 18px 64px}
-    h1{font-size:2.3rem}
-    .lang button{padding:4px 8px}
-  }
-  @media (max-width:820px){
-    .about{grid-template-columns:1fr;gap:36px}
-    .hero-grid{grid-template-columns:1fr;gap:40px}
-    .avatar{order:-1;width:min(200px,55vw)}
-    section{padding:40px 0}
-  }
-</style>
-</head>
-<body>
-<div class="glow"></div><div class="glow b"></div>
-
-<header id="top">
-  <nav class="wrap">
-    <a href="#" class="logo">gabriel<span>.</span>dev</a>
-    <button class="menu" aria-label="Menu" onclick="document.querySelector('.links').classList.toggle('open')">☰</button>
-    <div class="links">
-      <a href="#sobre" data-pt="Sobre" data-en="About">Sobre</a>
-      <a href="#formacao" data-pt="Formação" data-en="Education">Formação</a>
-      <a href="#experiencia" data-pt="Experiência" data-en="Experience">Experiência</a>
-      <a href="#projetos" data-pt="Projetos" data-en="Projects">Projetos</a>
-      <a href="#skills" data-pt="Tecnologias" data-en="Tech stack">Tecnologias</a>
-      <a href="#contato" data-pt="Contato" data-en="Contact">Contato</a>
-      <div class="lang" role="group" aria-label="Idioma"><button data-l="pt" class="on" aria-label="Português"><svg viewBox="0 0 28 20" class="flag"><rect width="28" height="20" fill="#009c3b"/><path d="M14 2.5 25.5 10 14 17.5 2.5 10z" fill="#ffdf00"/><circle cx="14" cy="10" r="4.3" fill="#002776"/><path d="M9.8 9.2c2.8-.6 5.9-.1 8.3 1.4" stroke="#fff" stroke-width=".8" fill="none"/></svg>PT</button><button data-l="en" aria-label="English"><svg viewBox="0 0 28 20" class="flag"><rect width="28" height="20" fill="#fff"/><g fill="#b22234"><rect y="0.00" width="28" height="1.54"/><rect y="3.08" width="28" height="1.54"/><rect y="6.15" width="28" height="1.54"/><rect y="9.23" width="28" height="1.54"/><rect y="12.31" width="28" height="1.54"/><rect y="15.38" width="28" height="1.54"/><rect y="18.46" width="28" height="1.54"/></g><rect width="12" height="10.77" fill="#3c3b6e"/><g fill="#fff"><circle cx="1.5" cy="1.3" r=".45"/><circle cx="3.7" cy="1.3" r=".45"/><circle cx="5.9" cy="1.3" r=".45"/><circle cx="8.1" cy="1.3" r=".45"/><circle cx="10.3" cy="1.3" r=".45"/><circle cx="2.6" cy="3.3" r=".45"/><circle cx="4.8" cy="3.3" r=".45"/><circle cx="7.0" cy="3.3" r=".45"/><circle cx="9.2" cy="3.3" r=".45"/><circle cx="1.5" cy="5.3" r=".45"/><circle cx="3.7" cy="5.3" r=".45"/><circle cx="5.9" cy="5.3" r=".45"/><circle cx="8.1" cy="5.3" r=".45"/><circle cx="10.3" cy="5.3" r=".45"/><circle cx="2.6" cy="7.3" r=".45"/><circle cx="4.8" cy="7.3" r=".45"/><circle cx="7.0" cy="7.3" r=".45"/><circle cx="9.2" cy="7.3" r=".45"/><circle cx="1.5" cy="9.3" r=".45"/><circle cx="3.7" cy="9.3" r=".45"/><circle cx="5.9" cy="9.3" r=".45"/><circle cx="8.1" cy="9.3" r=".45"/><circle cx="10.3" cy="9.3" r=".45"/></g></svg>EN</button></div>
-    </div>
-  </nav>
-</header>
-
-<main>
-  <!-- HERO -->
-  <div class="wrap hero">
-   <div class="hero-grid">
-   <div>
-    <div class="tag reveal"><span class="dot"></span><span data-pt="Disponível para oportunidades remotas" data-en="Open to remote opportunities">Disponível para oportunidades remotas</span></div>
-    <h1 class="reveal"><span data-pt="Olá, eu sou" data-en="Hi, I'm">Olá, eu sou</span><br><span class="grad">Gabriel Guimarães.</span></h1>
-    <p class="role reveal"><span>Front-End Engineer</span><span class="typed-line" id="typedLine"><span class="prompt">&gt;</span><span class="typed" id="typed">Angular</span></span></p>
-    <p class="loc reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Joinville / Balneário Barra do Sul, SC</p>
-    <p class="lead reveal" data-pt="Construo aplicações web e mobile enterprise há &lt;span class=&quot;hl&quot;&gt;mais de 5 anos&lt;/span&gt;, com foco em performance, testes automatizados e código fácil de manter. Hoje desenvolvo o TOTVS WMS na TOTVS." data-en="I've been building enterprise web and mobile applications for &lt;span class=&quot;hl&quot;&gt;5+ years&lt;/span&gt;, with a focus on performance, automated testing and maintainable code. Currently building TOTVS WMS at TOTVS.">Construo aplicações web e mobile enterprise há <span class="hl">mais de 5 anos</span>, com foco em performance, testes automatizados e código fácil de manter. Hoje desenvolvo o TOTVS WMS na TOTVS.</p>
-    <div class="cta reveal">
-      <a href="#contato" class="btn primary ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.8-.8L3 21l1.9-5A8.4 8.4 0 1 1 21 11.5z"/><path d="M8 10.5h8M8 14h5"/></svg><span data-pt="Vamos conversar" data-en="Let's talk">Vamos conversar</span></a>
-      <a href="curriculo.pdf" target="_blank" class="btn ghost ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg><span data-pt="Baixar currículo" data-en="Download résumé">Baixar currículo</span></a>
-    </div>
-    <div class="socials reveal">
-      <a href="https://www.linkedin.com/in/gabriel-guimar%C3%A3es-da-rocha-42b1a8206" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
-      <a href="https://github.com/gabrielguimah" target="_blank" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6 0-3.2 0 0 1-.3 3.4 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg></a>
-      <a href="https://wa.me/5547992510111" target="_blank" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 2.4 1 2.9.8 3.4.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zM20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.2 24l6.4-1.7a11.8 11.8 0 0 0 17.6-10.3c0-3.2-1.2-6.1-3.5-8.4z"/></svg></a>
-      <a href="mailto:gabrielguimah@gmail.com" aria-label="E-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></a>
-    </div>
-   </div>
-   <div class="avatar reveal"><span class="blob2" aria-hidden="true"></span><img src="foto.jpg" alt="Foto de Gabriel Guimarães" width="320" height="320"></div>
-   </div>
-  </div>
-
-  <!-- SOBRE -->
-  <section id="sobre">
-    <div class="wrap">
-      <div class="sec-head reveal"><span class="num">01.</span><h2 data-pt="Sobre mim" data-en="About me">Sobre mim</h2><span class="bar"></span></div>
-      <div class="about">
-        <div class="reveal">
-          <p data-pt="Sou desenvolvedor front-end de Joinville / Balneário Barra do Sul (SC), com &lt;strong&gt;graduação em Sistemas de Informação&lt;/strong&gt; pela Univille. Comecei com o técnico em Informática no SENAI e, desde então, venho construindo software que pessoas usam o dia inteiro." data-en="I&#x27;m a front-end developer from Joinville / Balneário Barra do Sul (SC), Brazil, with a &lt;strong&gt;degree in Information Systems&lt;/strong&gt; from Univille. I started with a technical diploma at SENAI and have been building software people use all day long ever since.">Sou desenvolvedor front-end de Joinville / Balneário Barra do Sul (SC), com <strong>graduação em Sistemas de Informação</strong> pela Univille. Comecei com o técnico em Informática no SENAI e, desde então, venho construindo software que pessoas usam o dia inteiro.</p>
-          <p data-pt="Na &lt;strong&gt;TOTVS&lt;/strong&gt;, uma das maiores empresas de software da América Latina, atuo como &lt;strong&gt;desenvolvedor front-end pleno&lt;/strong&gt; com &lt;strong&gt;Angular&lt;/strong&gt;, construindo um &lt;strong&gt;WMS&lt;/strong&gt; (Warehouse Management System), o sistema que roda a operação logística de marcas como Grendene e Fini. Antes, na &lt;strong&gt;Tiflux&lt;/strong&gt;, atuei como full-stack com &lt;strong&gt;React&lt;/strong&gt; e &lt;strong&gt;Ruby on Rails&lt;/strong&gt;." data-en="At &lt;strong&gt;TOTVS&lt;/strong&gt;, one of Latin America&#x27;s largest software companies, I work as a &lt;strong&gt;mid-level front-end developer&lt;/strong&gt; with &lt;strong&gt;Angular&lt;/strong&gt;, building a &lt;strong&gt;WMS&lt;/strong&gt; (Warehouse Management System), the system running warehouse operations for brands like Grendene and Fini. Before that, at &lt;strong&gt;Tiflux&lt;/strong&gt;, I worked full-stack with &lt;strong&gt;React&lt;/strong&gt; and &lt;strong&gt;Ruby on Rails&lt;/strong&gt;.">Na <strong>TOTVS</strong>, uma das maiores empresas de software da América Latina, atuo como <strong>desenvolvedor front-end pleno</strong> com <strong>Angular</strong>, construindo um <strong>WMS</strong> (Warehouse Management System), o sistema que roda a operação logística de marcas como Grendene e Fini. Antes, na <strong>Tiflux</strong>, atuei como full-stack com <strong>React</strong> e <strong>Ruby on Rails</strong>.</p>
-          <p data-pt="Gosto de &lt;strong&gt;interfaces rápidas&lt;/strong&gt;, de testes que dão confiança para refatorar e de transformar requisitos de cliente em &lt;strong&gt;soluções que vão para produção&lt;/strong&gt;." data-en="I care about &lt;strong&gt;fast interfaces&lt;/strong&gt;, tests that make refactoring safe, and turning customer requirements into &lt;strong&gt;production-ready solutions&lt;/strong&gt;.">Gosto de <strong>interfaces rápidas</strong>, de testes que dão confiança para refatorar e de transformar requisitos de cliente em <strong>soluções que vão para produção</strong>.</p>
-        </div>
-        <div class="stats reveal">
-          <div class="stat"><b>5+</b><span data-pt="anos de experiência" data-en="years of experience">anos de experiência</span></div>
-          <div class="stat"><b>2</b><span data-pt="sistemas SaaS corporativos em produção" data-en="enterprise SaaS systems in production">sistemas SaaS corporativos em produção</span></div>
-          <div class="stat"><b>PT/EN</b><span data-pt="nativo · fluente" data-en="native · fluent">nativo · fluente</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FORMAÇÃO -->
-  <section id="formacao">
-    <div class="wrap">
-      <div class="sec-head reveal"><span class="num">02.</span><h2 data-pt="Formação" data-en="Education">Formação</h2><span class="bar"></span></div>
-      <div class="edu">
-        <div class="item reveal"><div class="edu-top"><div class="edu-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/><path d="M22 9v6"/></svg></div><span class="period">2021 — 2025</span></div><h3 data-pt="Bacharelado em Sistemas de Informação" data-en="B.Sc. in Information Systems">Bacharelado em Sistemas de Informação</h3><p data-pt="Univille — Universidade da Região de Joinville" data-en="Univille — University of the Region of Joinville">Univille — Universidade da Região de Joinville</p><div class="chips"><span class="chip">React</span><span class="chip">Angular</span><span class="chip">TypeScript</span><span class="chip">Java</span><span class="chip">SQL</span><span class="chip" data-pt="Algoritmos" data-en="Algorithms">Algoritmos</span><span class="chip" data-pt="Estruturas de dados" data-en="Data Structures">Estruturas de dados</span><span class="chip" data-pt="Engenharia de sistemas de software" data-en="Software Systems Engineering">Engenharia de sistemas de software</span></div></div>
-        <div class="item reveal"><div class="edu-top"><div class="edu-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M7 8h10M7 11h6"/><circle cx="16.5" cy="15.5" r="2.5"/><path d="M15 17.5 14 22l2.5-1.3L19 22l-1-4.5"/></svg></div><span class="period">2019 — 2020</span></div><h3 data-pt="Técnico em Informática" data-en="Technical Diploma in Informatics">Técnico em Informática</h3><p data-pt="SENAI/SC — Curso Técnico Integrado ao Ensino Médio" data-en="SENAI/SC — Technical program integrated with high school">SENAI/SC — Curso Técnico Integrado ao Ensino Médio</p><div class="chips"><span class="chip" data-pt="Lógica de Programação" data-en="Programming Logic">Lógica de Programação</span><span class="chip" data-pt="Programação Orientada a Objetos" data-en="Object-Oriented Programming">Programação Orientada a Objetos</span><span class="chip" data-pt="Banco de Dados" data-en="Databases">Banco de Dados</span><span class="chip" data-pt="Redes de Computadores" data-en="Computer Networks">Redes de Computadores</span><span class="chip" data-pt="Sistemas Operacionais" data-en="Operating Systems">Sistemas Operacionais</span><span class="chip" data-pt="Montagem e Manutenção de Computadores" data-en="PC Assembly & Maintenance">Montagem e Manutenção de Computadores</span></div></div>
-      </div>
-      <div class="langs reveal">
-        <div><b data-pt="Português" data-en="Portuguese">Português</b><span data-pt="nativo" data-en="native">nativo</span></div>
-        <div><b data-pt="Inglês" data-en="English">Inglês</b><span data-pt="fluente" data-en="fluent">fluente</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIÊNCIA -->
-  <section id="experiencia">
-    <div class="wrap">
-      <div class="sec-head reveal"><span class="num">03.</span><h2 data-pt="Experiência" data-en="Experience">Experiência</h2><span class="bar"></span></div>
-      <div class="timeline">
-        <div class="job reveal">
-          <span class="period" data-pt="set 2022 — atual" data-en="Sep 2022 — Present">set 2022 — atual</span>
-          <h3>Front-End Developer <em>@ TOTVS</em></h3>
-          <p class="desc" data-pt="Desenvolvimento web e mobile do TOTVS WMS, sistema de gestão de armazéns usado na logística de grandes empresas como Grendene e Fini." data-en="Web and mobile development for TOTVS WMS, a warehouse management system used in the logistics of large companies such as Grendene and Fini.">Desenvolvimento web e mobile do TOTVS WMS, sistema de gestão de armazéns usado na logística de grandes empresas como Grendene e Fini.</p>
-          <ul>
-            <li data-pt="Interfaces responsivas e performáticas com Angular, Ionic, PO UI e Kendo UI para operadores que usam o sistema durante todo o turno." data-en="Responsive, high-performance interfaces with Angular, Ionic, PO UI and Kendo UI for operators who use the system throughout their shifts.">Interfaces responsivas e performáticas com Angular, Ionic, PO UI e Kendo UI para operadores que usam o sistema durante todo o turno.</li>
-            <li data-pt="Entrega de features e demandas de clientes nos módulos de expedição, ressuprimento e separação." data-en="Delivered features and customer demands in the shipping, replenishment and picking modules.">Entrega de features e demandas de clientes nos módulos de expedição, ressuprimento e separação.</li>
-            <li data-pt="Testes unitários com Jest, Jasmine e Karma, usando mocks e spies para evitar regressões." data-en="Unit tests with Jest, Jasmine and Karma, using mocks and spies to prevent regressions.">Testes unitários com Jest, Jasmine e Karma, usando mocks e spies para evitar regressões.</li>
-            <li data-pt="Monitoramento de filas de erro em produção, investigando e corrigindo problemas que afetam a operação dos clientes." data-en="Monitored production error queues, investigating and fixing issues affecting customer operations.">Monitoramento de filas de erro em produção, investigando e corrigindo problemas que afetam a operação dos clientes.</li>
-            <li data-pt="Refinamento de backlog, estimativas, critérios de aceite e documentação técnica e funcional." data-en="Backlog refinement, estimates, acceptance criteria and technical/functional documentation.">Refinamento de backlog, estimativas, critérios de aceite e documentação técnica e funcional.</li>
-          </ul>
-          <h4 class="sub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-6 9 6v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 21V12h6v9"/></svg><span data-pt="Módulos do WMS que desenvolvi e aprimorei" data-en="WMS modules I built and improved">Módulos do WMS que desenvolvi e aprimorei</span></h4>
-          <div class="mods"><span data-pt="Etiquetas" data-en="Labels">Etiquetas</span><span data-pt="Estoque" data-en="Inventory Stock">Estoque</span><span data-pt="Recebimento" data-en="Receiving">Recebimento</span><span data-pt="Expedição" data-en="Shipping">Expedição</span><span data-pt="Conferência de Expedição" data-en="Shipping Check">Conferência de Expedição</span><span data-pt="Separação de Estoque" data-en="Stock Picking">Separação de Estoque</span><span data-pt="Plano de Embarque" data-en="Loading Plan">Plano de Embarque</span><span data-pt="Atividade extra" data-en="Extra Activities">Atividade extra</span><span>Picking</span><span data-pt="Reabastecimento" data-en="Replenishment">Reabastecimento</span><span data-pt="Documentos" data-en="Documents">Documentos</span><span data-pt="Atividades" data-en="Activities">Atividades</span><span data-pt="Gestão interna" data-en="Internal Management">Gestão interna</span></div>
-          <div class="chips"><span class="chip">Angular</span><span class="chip">TypeScript</span><span class="chip">RxJS</span><span class="chip">Ionic</span><span class="chip">PO UI</span><span class="chip">Kendo UI</span><span class="chip">Jest</span><span class="chip">Jasmine</span><span class="chip">Karma</span></div>
-        </div>
-        <div class="job reveal">
-          <span class="period" data-pt="jan 2021 — set 2022" data-en="Jan 2021 — Sep 2022">jan 2021 — set 2022</span>
-          <h3>Full-Stack Developer <em>@ Tiflux</em></h3>
-          <p class="desc" data-pt="Features de ponta a ponta para a Tiflux, plataforma SaaS de service desk, help desk e gestão de serviços de TI, atuando em todas as frentes do produto." data-en="End-to-end features for Tiflux, a SaaS service desk, help desk and IT service management platform, working across every area of the product.">Features de ponta a ponta para a Tiflux, plataforma SaaS de service desk, help desk e gestão de serviços de TI, atuando em todas as frentes do produto.</p>
-          <ul>
-            <li data-pt="Front-end com React, JavaScript e TypeScript; back-end e dados com Ruby on Rails e SQL." data-en="Front-end with React, JavaScript and TypeScript; back-end and data with Ruby on Rails and SQL.">Front-end com React, JavaScript e TypeScript; back-end e dados com Ruby on Rails e SQL.</li>
-            <li data-pt="Testes automatizados com RSpec e correção de bugs via validação funcional e troubleshooting." data-en="Automated tests with RSpec and bug fixing through functional validation and troubleshooting.">Testes automatizados com RSpec e correção de bugs via validação funcional e troubleshooting.</li>
-          </ul>
-          <h4 class="sub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v12H5.2L4 17.2z"/><path d="M8 9h8M8 12h5"/></svg><span data-pt="Funcionalidades do service desk em que atuei" data-en="Service desk features I worked on">Funcionalidades do service desk em que atuei</span></h4>
-          <div class="mods feats"><span data-pt="Gestão de tickets com SLA, prioridades e filas" data-en="Ticket management with SLAs, priorities and queues">Gestão de tickets com SLA, prioridades e filas</span><span data-pt="Portal do cliente para abrir e acompanhar chamados" data-en="Customer portal to open and track requests">Portal do cliente para abrir e acompanhar chamados</span><span data-pt="Atendimento via WhatsApp integrado aos tickets" data-en="WhatsApp support integrated with tickets">Atendimento via WhatsApp integrado aos tickets</span><span data-pt="Monitoramento de ativos com agente instalado nas máquinas" data-en="Asset monitoring through an installed agent">Monitoramento de ativos com agente instalado nas máquinas</span><span data-pt="App mobile para técnicos e gestores" data-en="Mobile app for technicians and managers">App mobile para técnicos e gestores</span><span data-pt="Relatórios e dashboards de atendimento" data-en="Support reports and dashboards">Relatórios e dashboards de atendimento</span><span data-pt="Automação de fluxos de atendimento" data-en="Support workflow automation">Automação de fluxos de atendimento</span><span data-pt="Integrações com GitHub, Conta Azul, Asaas e outros sistemas" data-en="Integrations with GitHub, Conta Azul, Asaas and other systems">Integrações com GitHub, Conta Azul, Asaas e outros sistemas</span></div>
-          <div class="chips"><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Ruby on Rails</span><span class="chip">PostgreSQL</span><span class="chip">Redis</span><span class="chip">Docker</span><span class="chip">RSpec</span><span class="chip">AWS</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJETOS -->
-  <section id="projetos">
-    <div class="wrap">
-      <div class="sec-head reveal"><span class="num">04.</span><h2 data-pt="Projetos" data-en="Projects">Projetos</h2><span class="bar"></span></div>
-      <div class="projects">
-        <div class="proj reveal">
-          <div class="top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-6 9 6v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 21V12h6v9"/></svg><span class="ext">TOTVS</span></div>
-          <h3>TOTVS WMS</h3>
-          <p data-pt="Sistema de gestão de armazéns web e mobile usado na operação logística de marcas como Grendene e Fini. Desenvolvi e aprimorei todos os módulos: recebimento, estoque, expedição, picking, reabastecimento, etiquetas, documentos e mais." data-en="Web and mobile warehouse management system running the logistics of brands like Grendene and Fini. I built and improved every module: receiving, stock, shipping, picking, replenishment, labels, documents and more.">Sistema de gestão de armazéns web e mobile usado na operação logística de marcas como Grendene e Fini. Desenvolvi e aprimorei todos os módulos: recebimento, estoque, expedição, picking, reabastecimento, etiquetas, documentos e mais.</p>
-          <div class="chips"><span class="chip">Angular</span><span class="chip">Ionic</span><span class="chip">PO UI</span><span class="chip">RxJS</span></div>
-        </div>
-        <div class="proj reveal">
-          <div class="top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v12H5.2L4 17.2z"/><path d="M8 9h8M8 12h5"/></svg><span class="ext">Tiflux</span></div>
-          <h3>Tiflux Service Desk</h3>
-          <p data-pt="Plataforma SaaS de service desk e ITSM: tickets com SLA, portal do cliente, atendimento via WhatsApp, monitoramento de ativos, app mobile, dashboards e integrações com GitHub, Conta Azul e Asaas. Atuei de ponta a ponta, do React ao Rails." data-en="SaaS service desk and ITSM platform: tickets with SLAs, customer portal, WhatsApp support, asset monitoring, mobile app, dashboards and integrations with GitHub, Conta Azul and Asaas. I worked end to end, from React to Rails.">Plataforma SaaS de service desk e ITSM: tickets com SLA, portal do cliente, atendimento via WhatsApp, monitoramento de ativos, app mobile, dashboards e integrações com GitHub, Conta Azul e Asaas. Atuei de ponta a ponta, do React ao Rails.</p>
-          <div class="chips"><span class="chip">React</span><span class="chip">React Native</span><span class="chip">Ruby on Rails</span><span class="chip">PostgreSQL</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="wrap">
-      <div class="sec-head reveal"><span class="num">05.</span><h2 data-pt="Tecnologias" data-en="Tech stack">Tecnologias</h2><span class="bar"></span></div>
-      <p class="stack-note reveal"><span class="core-dot"></span><span data-pt="Em destaque, as tecnologias que mais uso no dia a dia." data-en="Highlighted: the technologies I use most day to day.">Em destaque, as tecnologias que mais uso no dia a dia.</span></p>
-      <div class="stack">
-        <div class="stack-row reveal"><div class="stack-head"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5"/><path d="m16 7 5 5-5 5"/><path d="m14 4-4 16"/></svg></div><h3 data-pt="Linguagens" data-en="Languages">Linguagens</h3><span class="count">7</span></div><div class="list"><span class="core">JavaScript</span><span class="core">TypeScript</span><span class="core">HTML</span><span class="core">CSS</span><span>Java</span><span>Ruby</span><span>SQL</span></div></div>
-        <div class="stack-row reveal"><div class="stack-head"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="14" height="11" rx="1.5"/><path d="M6 19h6M9 15v4"/><rect x="17" y="9" width="5" height="11" rx="1.2"/></svg></div><h3>Front-End & Mobile</h3><span class="count">13</span></div><div class="list"><span class="core">Angular</span><span class="core">React</span><span class="core">RxJS</span><span class="core">React Hooks</span><span class="core">User Experience (UX)</span><span class="core" data-pt="Desenvolvimento de front-end" data-en="Front-End Development">Desenvolvimento de front-end</span><span>React Native</span><span>Ionic</span><span>PO UI</span><span>Kendo UI</span><span data-pt="Design Responsivo" data-en="Responsive Design">Design Responsivo</span><span data-pt="Design de interface do usuário" data-en="User Interface Design">Design de interface do usuário</span><span>Mockups</span></div></div>
-        <div class="stack-row reveal"><div class="stack-head"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.8"/><path d="M4.5 5.5v6.5c0 1.6 3.4 2.8 7.5 2.8s7.5-1.2 7.5-2.8V5.5"/><path d="M4.5 12v6.5c0 1.6 3.4 2.8 7.5 2.8s7.5-1.2 7.5-2.8V12"/></svg></div><h3 data-pt="Back-End & Dados" data-en="Back-End & Data">Back-End & Dados</h3><span class="count">10</span></div><div class="list"><span class="core" data-pt="API REST" data-en="REST APIs">API REST</span><span class="core">PostgreSQL</span><span class="core" data-pt="Microsserviços" data-en="Microservices">Microsserviços</span><span class="core">RabbitMQ</span><span>Ruby on Rails</span><span>Redis</span><span data-pt="Banco de dados" data-en="Databases">Banco de dados</span><span data-pt="API da OpenAI" data-en="OpenAI API">API da OpenAI</span><span data-pt="Desenvolvimento de back-end" data-en="Back-End Development">Desenvolvimento de back-end</span><span data-pt="Desenvolvimento full stack" data-en="Full-Stack Development">Desenvolvimento full stack</span></div></div>
-        <div class="stack-row reveal"><div class="stack-head"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"/><path d="M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"/><path d="M7.5 15h9"/></svg></div><h3 data-pt="Testes" data-en="Testing">Testes</h3><span class="count">12</span></div><div class="list"><span class="core">Jest</span><span class="core">Jasmine</span><span class="core">Karma</span><span class="core">Cypress</span><span class="core">Mocks / Spies / Stubs</span><span class="core">RSpec</span><span class="core" data-pt="Teste de sistemas" data-en="System Testing">Teste de sistemas</span><span data-pt="Testes automatizados de software" data-en="Automated Software Testing">Testes automatizados de software</span><span data-pt="Testes unitários" data-en="Unit Testing">Testes unitários</span><span data-pt="Teste de integração" data-en="Integration Testing">Teste de integração</span><span data-pt="Teste de regressão" data-en="Regression Testing">Teste de regressão</span><span>Smoke Testing</span></div></div>
-        <div class="stack-row reveal"><div class="stack-head"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4.5 4.5 0 0 1-.6-9 6 6 0 0 1 11.5 1.6A3.8 3.8 0 0 1 17.5 18z"/></svg></div><h3>Cloud & DevOps</h3><span class="count">7</span></div><div class="list"><span class="core">Amazon Web Services</span><span class="core">Azure DevOps</span><span class="core">Docker</span><span class="core">Git</span><span>GitHub</span><span data-pt="Redes de computadores" data-en="Computer Networks">Redes de computadores</span><span data-pt="Sistemas operacionais" data-en="Operating Systems">Sistemas operacionais</span></div></div>
-        <div class="stack-row reveal"><div class="stack-head"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5z"/><path d="m2 12 10 5 10-5"/><path d="m2 17 10 5 10-5"/></svg></div><h3 data-pt="Arquitetura & Fundamentos" data-en="Architecture & Fundamentals">Arquitetura & Fundamentos</h3><span class="count">10</span></div><div class="list"><span class="core" data-pt="Inteligência artificial" data-en="Artificial Intelligence">Inteligência artificial</span><span class="core">SaaS</span><span class="core" data-pt="Arquitetura de software" data-en="Software Architecture">Arquitetura de software</span><span data-pt="Engenharia de sistemas de software" data-en="Software Systems Engineering">Engenharia de sistemas de software</span><span data-pt="Práticas de engenharia de software" data-en="Software Engineering Practices">Práticas de engenharia de software</span><span data-pt="Programação orientada a objetos (POO)" data-en="Object-Oriented Programming (OOP)">Programação orientada a objetos (POO)</span><span data-pt="Algoritmos" data-en="Algorithms">Algoritmos</span><span data-pt="Estruturas de dados" data-en="Data Structures">Estruturas de dados</span><span data-pt="Programação (computação)" data-en="Computer Programming">Programação (computação)</span><span data-pt="Matemática discreta" data-en="Discrete Mathematics">Matemática discreta</span></div></div>
-        <div class="stack-row reveal"><div class="stack-head"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></div><h3 data-pt="Domínio & Práticas" data-en="Domain & Practices">Domínio & Práticas</h3><span class="count">11</span></div><div class="list"><span class="core" data-pt="Sistemas de gerenciamento de armazéns (WMS)" data-en="Warehouse Management Systems (WMS)">Sistemas de gerenciamento de armazéns (WMS)</span><span class="core" data-pt="Central de serviços" data-en="Service Desk">Central de serviços</span><span class="core" data-pt="Suporte ao cliente" data-en="Customer Support">Suporte ao cliente</span><span>Scrum</span><span data-pt="Metodologias Agile" data-en="Agile Methodologies">Metodologias Agile</span><span>Kanban</span><span data-pt="Gestão de projetos" data-en="Project Management">Gestão de projetos</span><span data-pt="Monitoramento em produção" data-en="Production Monitoring">Monitoramento em produção</span><span data-pt="Documentação técnica" data-en="Technical Documentation">Documentação técnica</span><span>Microsoft Excel</span><span>Microsoft PowerPoint</span></div></div>
-        <div class="stack-row reveal"><div class="stack-head"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div><h3 data-pt="Competências" data-en="Soft Skills">Competências</h3><span class="count">4</span></div><div class="list"><span class="core" data-pt="Tomada de decisão" data-en="Decision Making">Tomada de decisão</span><span class="core" data-pt="Análise de problemas" data-en="Problem Solving">Análise de problemas</span><span data-pt="Forte ética profissional" data-en="Strong Work Ethic">Forte ética profissional</span><span data-pt="Empreendedorismo" data-en="Entrepreneurship">Empreendedorismo</span></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTATO -->
-  <section id="contato">
-    <div class="wrap contact reveal">
-      <span class="num">06. <span data-pt="E agora?" data-en="What's next?">E agora?</span></span>
-      <h2 data-pt="Vamos trabalhar juntos" data-en="Let's work together">Vamos trabalhar juntos</h2>
-      <p data-pt="Estou aberto a oportunidades remotas como front-end engineer. Se você tem um projeto ou vaga em mente, minha caixa de entrada está sempre aberta." data-en="I'm open to remote front-end engineering roles. If you have a project or position in mind, my inbox is always open.">Estou aberto a oportunidades remotas como front-end engineer. Se você tem um projeto ou vaga em mente, minha caixa de entrada está sempre aberta.</p>
-      <div class="cta-row"><a href="mailto:gabrielguimah@gmail.com" class="btn primary ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg><span data-pt="Enviar e-mail" data-en="Send an email">Enviar e-mail</span></a><a href="https://wa.me/5547992510111" target="_blank" class="btn ghost wa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 2.4 1 2.9.8 3.4.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8zM20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.2 24l6.4-1.7a11.8 11.8 0 0 0 17.6-10.3c0-3.2-1.2-6.1-3.5-8.4z"/></svg>WhatsApp</a></div>
-      <span class="mail" id="copyMail" title="Copiar">gabrielguimah@gmail.com</span><span class="mail-sep">·</span><a class="mail phone" href="https://wa.me/5547992510111" target="_blank" aria-label="WhatsApp +55 (47) 99251-0111"><svg viewBox="0 0 28 20" class="flag"><rect width="28" height="20" fill="#009c3b"/><path d="M14 2.5 25.5 10 14 17.5 2.5 10z" fill="#ffdf00"/><circle cx="14" cy="10" r="4.3" fill="#002776"/><path d="M9.8 9.2c2.8-.6 5.9-.1 8.3 1.4" stroke="#fff" stroke-width=".8" fill="none"/></svg><span>+55 (47) 99251-0111</span></a>
-    </div>
-  </section>
-</main>
-
-<footer><div class="wrap" data-pt="Feito por Gabriel Guimarães · © " data-en="Built by Gabriel Guimarães · © ">Feito por Gabriel Guimarães · © </div></footer>
-
-<script>
-  // year
-  const foot = document.querySelector('footer .wrap');
-  const year = new Date().getFullYear();
-  foot.textContent += year;
-
-  // header border on scroll
-  const header = document.querySelector('header');
-  addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 10));
-
-  // close mobile menu on click
-  document.querySelectorAll('.links a').forEach(a => a.addEventListener('click', () => document.querySelector('.links').classList.remove('open')));
-
-  // reveal on scroll
-  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  // typing effect
-  // all skills from the Tech stack section, in the current language
-  const skillWords = () => [...document.querySelectorAll('#skills .list span')].map(s => s.textContent.trim());
-  let wi = 0, ci = 0, del = false, lang = 'pt';
-  const typed = document.getElementById('typed');
-  const typedLine = document.getElementById('typedLine');
-  const measure = document.createElement('canvas').getContext('2d');
-  // shrink the font only for skills too long to fit on one line
-  function fitWord(word) {
-    typed.style.fontSize = '';
-    const cs = getComputedStyle(typed);
-    measure.font = `${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
-    const needed = measure.measureText(word).width + 10;
-    const prompt = typedLine.querySelector('.prompt');
-    const avail = typedLine.clientWidth - prompt.offsetWidth - parseFloat(getComputedStyle(typedLine).columnGap || 0) - 4;
-    if (needed > avail) typed.style.fontSize = (parseFloat(cs.fontSize) * avail / needed) + 'px';
-  }
-  function tick() {
-    const list = skillWords();
-    const w = list[wi % list.length];
-    if (ci === 0 && !del) fitWord(w);
-    typed.textContent = w.slice(0, ci);
-    if (!del && ci < w.length) ci++;
-    else if (del && ci > 0) ci--;
-    else if (!del) { del = true; return setTimeout(tick, 1100); }
-    else { del = false; wi++; }
-    setTimeout(tick, del ? 30 : 65);
-  }
-  tick();
-
-  // language toggle
-  const btns = document.querySelectorAll('.lang button');
-  function setLang(l) {
-    lang = l;
-    document.documentElement.lang = l === 'pt' ? 'pt-BR' : 'en';
-    document.querySelectorAll('[data-pt]').forEach(el => {
-      const v = el.getAttribute('data-' + l);
-      if (el.closest('footer')) el.textContent = v + year; else el.innerHTML = v;
-    });
-    btns.forEach(b => b.classList.toggle('on', b.dataset.l === l));
-    try { localStorage.setItem('lang', l); } catch (e) {}
-  }
-  btns.forEach(b => b.addEventListener('click', () => setLang(b.dataset.l)));
-  try { const saved = localStorage.getItem('lang'); if (saved && saved !== 'pt') setLang(saved); } catch (e) {}
-
-  // copy email
-  document.getElementById('copyMail').addEventListener('click', e => {
-    navigator.clipboard?.writeText('gabrielguimah@gmail.com');
-    const t = e.target, o = t.textContent;
-    t.textContent = lang === 'pt' ? 'copiado ✓' : 'copied ✓';
-    setTimeout(() => t.textContent = o, 1500);
-  });
-</script>
-</body>
+    <script type="module" src="dist/main.js"></script>
+  </body>
 </html>

@@ -1,0 +1,24 @@
+/* base */
+@import url('./base/tokens.css');
+@import url('./base/reset.css');
+@import url('./base/layout.css');
+@import url('./base/animations.css');
+
+/* shared ui */
+@import url('./components/button.css');
+@import url('./components/tag-list.css');
+@import url('./components/section-heading.css');
+@import url('./components/language-switch.css');
+
+/* layout */
+@import url('./components/site-header.css');
+@import url('./components/site-footer.css');
+
+/* sections */
+@import url('./components/hero.css');
+@import url('./components/about.css');
+@import url('./components/education.css');
+@import url('./components/experience.css');
+@import url('./components/projects.css');
+@import url('./components/stack.css');
+@import url('./components/contact.css');

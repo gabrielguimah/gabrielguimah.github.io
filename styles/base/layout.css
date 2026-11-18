@@ -1,0 +1,100 @@
+/* Custom element hosts are wrappers only; their markup takes part in the page layout. */
+site-header,
+site-footer,
+language-switch,
+hero-section,
+about-section,
+education-section,
+experience-section,
+projects-section,
+stack-section,
+contact-section {
+  display: contents;
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+main,
+.site-header,
+.site-footer {
+  position: relative;
+  z-index: 1;
+}
+
+main {
+  overflow-x: clip;
+}
+
+.section {
+  padding: var(--section-spacing) 0;
+}
+
+/* background glows */
+.glow {
+  position: fixed;
+  inset: -20% -10% auto auto;
+  width: 640px;
+  height: 640px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 240, 197, 0.12), transparent 60%);
+  filter: blur(20px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glow--secondary {
+  inset: auto auto -25% -15%;
+  background: radial-gradient(circle, rgba(91, 140, 255, 0.1), transparent 60%);
+}
+
+/* shared surfaces */
+.card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 26px;
+}
+
+.icon-badge {
+  width: 44px;
+  height: 44px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--accent-a10);
+  border: 1px solid var(--accent-a18);
+  color: var(--color-accent);
+}
+
+.icon-badge .icon {
+  width: 24px;
+  height: 24px;
+}
+
+.icon-badge--small {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+}
+
+.icon-badge--small .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.flag {
+  width: 20px;
+  height: 14px;
+  border-radius: 2px;
+}
+
+@media (max-width: 700px) {
+  .card {
+    padding: 20px;
+  }
+}

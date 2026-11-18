@@ -1,0 +1,35 @@
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.section-heading__number {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--color-accent);
+}
+
+.section-heading__title {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.section-heading__line {
+  flex: 1;
+  max-width: 300px;
+  height: 1px;
+  background: var(--color-border);
+}
+
+@media (max-width: 700px) {
+  .section-heading {
+    margin-bottom: 32px;
+  }
+
+  .section-heading__line {
+    display: none;
+  }
+}

@@ -1,0 +1,18 @@
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.tag {
+  max-width: 100%;
+  padding: 5px 11px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--accent-a18);
+  background: var(--accent-a08);
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  overflow-wrap: anywhere;
+}

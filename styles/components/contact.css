@@ -1,0 +1,76 @@
+.contact {
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact__eyebrow {
+  font-family: var(--font-mono);
+  color: var(--color-accent);
+}
+
+.contact__title {
+  margin: 12px 0 18px;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.contact__message {
+  margin-bottom: 36px;
+  font-size: 1.06rem;
+  color: var(--color-muted);
+}
+
+.contact__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+.contact__details {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 22px;
+}
+
+.contact__detail {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  background: none;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.contact__detail:hover {
+  color: var(--color-accent);
+}
+
+.contact__detail .flag {
+  width: 22px;
+  height: 15px;
+}
+
+.contact__separator {
+  margin: 0 10px;
+  color: var(--color-border);
+}
+
+@media (max-width: 700px) {
+  .contact__details {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .contact__separator {
+    display: none;
+  }
+}

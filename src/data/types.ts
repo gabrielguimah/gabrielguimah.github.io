@@ -1,0 +1,99 @@
+import type { IconName } from '../icons/index.js';
+
+export type Locale = 'pt' | 'en';
+
+/** A string translated into every supported locale. */
+export type Localized = Record<Locale, string>;
+
+/** Either a locale-independent string (e.g. a product name) or a translated one. */
+export type Text = string | Localized;
+
+export type SectionId = 'about' | 'education' | 'experience' | 'projects' | 'stack' | 'contact';
+
+export interface Section {
+  id: SectionId;
+  title: Localized;
+  navLabel: Localized;
+}
+
+export interface SocialLink {
+  label: string;
+  href: string;
+  icon: IconName;
+}
+
+export interface Profile {
+  name: string;
+  role: string;
+  location: string;
+  availability: Localized;
+  greeting: Localized;
+  /** May contain inline `<span class="hl">` highlights. */
+  summary: Localized;
+  photo: string;
+  resume: string;
+  email: string;
+  phone: { display: string; whatsapp: string };
+  socials: SocialLink[];
+}
+
+export interface Stat {
+  value: string;
+  label: Localized;
+}
+
+export interface About {
+  /** May contain inline `<strong>` highlights. */
+  paragraphs: Localized[];
+  stats: Stat[];
+}
+
+export interface Education {
+  period: string;
+  degree: Localized;
+  school: Localized;
+  icon: IconName;
+  tags: Text[];
+}
+
+export interface Language {
+  name: Localized;
+  level: Localized;
+}
+
+export interface Showcase {
+  title: Localized;
+  icon: IconName;
+  /** `modules` renders compact tags, `features` renders a two-column list. */
+  variant: 'modules' | 'features';
+  items: Text[];
+}
+
+export interface Experience {
+  role: string;
+  company: string;
+  period: Localized;
+  summary: Localized;
+  highlights: Localized[];
+  showcase?: Showcase;
+  tags: string[];
+}
+
+export interface Project {
+  title: string;
+  company: string;
+  icon: IconName;
+  description: Localized;
+  tags: string[];
+}
+
+export interface Skill {
+  label: Text;
+  featured?: boolean;
+}
+
+export interface SkillGroup {
+  title: Text;
+  icon: IconName;
+  skills: Skill[];
+}
