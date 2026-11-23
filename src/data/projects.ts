@@ -2,6 +2,22 @@ import type { Project } from './types.js';
 
 export const projects: Project[] = [
   {
+    title: 'Arquibancada',
+    company: { pt: 'Projeto pessoal', en: 'Side project' },
+    icon: 'stadium',
+    description: {
+      pt: 'Placares ao vivo do Brasileirão com classificação, rodadas, estatísticas de times e jogadores, lance a lance e mapa do campo. Feito em Angular com RxJS e Angular Material, usando um Cloudflare Worker como camada de API.',
+      en: 'Live Brazilian league scores with standings, rounds, team and player stats, play-by-play and a pitch map. Built with Angular, RxJS and Angular Material, using a Cloudflare Worker as the API layer.',
+    },
+    tags: ['Angular', 'RxJS', 'Angular Material', 'Cloudflare Workers', 'Vitest'],
+    links: {
+      demo: 'https://gabrielguimah.com.br/arquibancada',
+      repository: 'https://github.com/gabrielguimah/arquibancada',
+    },
+    image: 'assets/images/projects/arquibancada.jpg',
+    featured: true,
+  },
+  {
     title: 'TOTVS WMS',
     company: 'TOTVS',
     icon: 'warehouse',

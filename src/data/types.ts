@@ -79,12 +79,22 @@ export interface Experience {
   tags: string[];
 }
 
+export interface ProjectLinks {
+  demo?: string;
+  repository?: string;
+}
+
 export interface Project {
   title: string;
-  company: string;
+  /** Company name, or a label such as "Side project". */
+  company: Text;
   icon: IconName;
   description: Localized;
   tags: string[];
+  links?: ProjectLinks;
+  /** Screenshot path. Featured projects span the full row and show it beside the text. */
+  image?: string;
+  featured?: boolean;
 }
 
 export interface Skill {

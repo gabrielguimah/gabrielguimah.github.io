@@ -6,6 +6,10 @@ export const copy = {
     talk: { pt: 'Vamos conversar', en: "Let's talk" },
     resume: { pt: 'Baixar currículo', en: 'Download résumé' },
   },
+  projects: {
+    demo: { pt: 'Ver ao vivo', en: 'Live demo' },
+    repository: { pt: 'Código', en: 'Source code' },
+  },
   stack: {
     note: {
       pt: 'Em destaque, as tecnologias que mais uso no dia a dia.',
