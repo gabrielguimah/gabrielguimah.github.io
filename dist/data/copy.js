@@ -7,6 +7,7 @@ export const copy = {
     projects: {
         demo: { pt: 'Ver ao vivo', en: 'Live demo' },
         repository: { pt: 'Código', en: 'Source code' },
+        inProgress: { pt: 'Em andamento', en: 'In progress' },
     },
     stack: {
         note: {

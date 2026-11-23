@@ -85,7 +85,8 @@ export interface ProjectLinks {
 }
 
 export interface Project {
-  title: string;
+  /** Product name, translated when it has a meaning worth explaining (e.g. "Arquibancada"). */
+  title: Text;
   /** Company name, or a label such as "Side project". */
   company: Text;
   icon: IconName;
@@ -95,6 +96,8 @@ export interface Project {
   /** Screenshot path. Featured projects span the full row and show it beside the text. */
   image?: string;
   featured?: boolean;
+  /** Shows an "in progress" badge beside the title. */
+  inProgress?: boolean;
 }
 
 export interface Skill {

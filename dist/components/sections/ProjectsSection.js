@@ -27,7 +27,13 @@ export class ProjectsSection extends Component {
             ${icon(project.icon, 'project-card__icon')}
             <span class="project-card__company">${this.t(project.company)}</span>
           </div>
-          <h3 class="project-card__title">${project.title}</h3>
+          <div class="project-card__heading">
+            <h3 class="project-card__title">${this.t(project.title)}</h3>
+            ${project.inProgress &&
+            html `<span class="project-card__status"
+              ><span class="project-card__status-dot"></span>${this.t(copy.projects.inProgress)}</span
+            >`}
+          </div>
           <p class="project-card__description">${this.t(project.description)}</p>
           ${tagList(project.tags)}
           ${project.links && this.#links(project.links)}
@@ -38,7 +44,7 @@ export class ProjectsSection extends Component {
     }
     #preview(project) {
         const href = project.links?.demo;
-        const image = html `<img src="${project.image}" alt="${project.title}" loading="lazy" width="1045" height="582" />`;
+        const image = html `<img src="${project.image}" alt="${this.t(project.title)}" loading="lazy" width="1045" height="582" />`;
         return html `
       <figure class="project-card__preview">
         ${href ? html `<a href="${href}" target="_blank" rel="noopener" tabindex="-1">${image}</a>` : image}
