@@ -59,6 +59,10 @@ export class ProjectsSection extends Component {
   #links(links: ProjectLinks): string {
     return html`
       <div class="project-card__links">
+        ${links.website &&
+        html`<a class="project-card__link" href="${links.website}" target="_blank" rel="noopener">
+          ${icon('globe')}<span>${this.t(copy.projects.website)}</span>
+        </a>`}
         ${links.demo &&
         html`<a class="project-card__link" href="${links.demo}" target="_blank" rel="noopener">
           ${icon('external')}<span>${this.t(copy.projects.demo)}</span>

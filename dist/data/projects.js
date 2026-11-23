@@ -25,6 +25,9 @@ export const projects = [
             en: 'Web and mobile warehouse management system running the logistics of brands like Grendene and Fini. I built and improved every module: receiving, stock, shipping, picking, replenishment, labels, documents and more.',
         },
         tags: ['Angular', 'Ionic', 'PO UI', 'RxJS'],
+        links: {
+            website: 'https://www.totvs.com/wms/',
+        },
     },
     {
         title: 'Tiflux Service Desk',
@@ -35,5 +38,8 @@ export const projects = [
             en: 'SaaS service desk and ITSM platform: tickets with SLAs, customer portal, WhatsApp support, asset monitoring, mobile app, dashboards and integrations with GitHub, Conta Azul and Asaas. I worked end to end, from React to Rails.',
         },
         tags: ['React', 'React Native', 'Ruby on Rails', 'PostgreSQL'],
+        links: {
+            website: 'https://tiflux.com/',
+        },
     },
 ];

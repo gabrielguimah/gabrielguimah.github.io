@@ -5,6 +5,7 @@ export const copy = {
         resume: { pt: 'Baixar currículo', en: 'Download résumé' },
     },
     projects: {
+        website: { pt: 'Site oficial', en: 'Official website' },
         demo: { pt: 'Ver ao vivo', en: 'Live demo' },
         repository: { pt: 'Código', en: 'Source code' },
         inProgress: { pt: 'Em andamento', en: 'In progress' },

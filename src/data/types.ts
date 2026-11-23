@@ -80,6 +80,8 @@ export interface Experience {
 }
 
 export interface ProjectLinks {
+  /** Official product page, for work projects without a public demo. */
+  website?: string;
   demo?: string;
   repository?: string;
 }
